@@ -18,7 +18,7 @@ export default function Navbar() {
 
       <div>
         <Link
-          href="#unirse"
+          href="/login"
           className="bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-xl transition"
         >
           Unirse

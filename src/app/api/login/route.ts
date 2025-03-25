@@ -14,7 +14,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Faltan datos' }, { status: 400 })
   }
 
-  // Buscar usuario por email
   const user = await prisma.user.findUnique({
     where: { email },
   })
@@ -23,14 +22,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Usuario no encontrado' }, { status: 404 })
   }
 
-  // Comparar contraseñas
   const validPassword = await bcrypt.compare(password, user.password)
 
   if (!validPassword) {
     return NextResponse.json({ error: 'Contraseña incorrecta' }, { status: 401 })
   }
 
-  // Crear JWT
   const token = jwt.sign(
     {
       id: user.id,
@@ -41,15 +38,7 @@ export async function POST(req: Request) {
     { expiresIn: '7d' }
   )
 
-  // Guardar JWT en una cookie
-  cookies().set('auth_token', token, {
-    httpOnly: true,
-    path: '/',
-    maxAge: 60 * 60 * 24 * 7, // 7 días
-  })
-
-  // Responder con datos del usuario
-  return NextResponse.json({
+  const response = NextResponse.json({
     message: 'Inicio de sesión exitoso',
     user: {
       id: user.id,
@@ -57,4 +46,12 @@ export async function POST(req: Request) {
       email: user.email,
     },
   })
+
+  response.cookies.set('auth_token', token, {
+    httpOnly: true,
+    path: '/',
+    maxAge: 60 * 60 * 24 * 7, // 7 días
+  })
+
+  return response
 }

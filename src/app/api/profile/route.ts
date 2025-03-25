@@ -13,6 +13,7 @@ export async function GET(): Promise<NextResponse> {
       return NextResponse.json({ error: 'No autenticado' }, { status: 401 })
     }
 
+   
     const decoded = jwt.verify(token, JWT_SECRET) as {
       id: string
       name: string
@@ -20,7 +21,10 @@ export async function GET(): Promise<NextResponse> {
     }
 
     return NextResponse.json({ user: decoded })
-  } catch (err: unknown) {  
+  } catch (err: unknown) { 
+    if (err instanceof Error) {
+      console.error(err.message)  
+    }
     return NextResponse.json({ error: 'Token inválido o expirado' }, { status: 401 })
   }
 }

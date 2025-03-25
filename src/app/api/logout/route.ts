@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
+import jwt from 'jsonwebtoken'  // Asegúrate de que esta línea esté presente
 
 const JWT_SECRET = process.env.JWT_SECRET || 'secreto-super-seguro'
 

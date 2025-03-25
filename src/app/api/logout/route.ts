@@ -1,15 +1,28 @@
 import { NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 
-export async function POST() {
-  // Esperamos la promesa de cookies() y luego trabajamos con ella
-  const cookieStore = await cookies() // Asegúrate de esperar la promesa
+const JWT_SECRET = process.env.JWT_SECRET || 'secreto-super-seguro'
 
-  // Usamos NextResponse para establecer la respuesta correctamente
-  const response = NextResponse.json({ message: 'Sesión cerrada' })
+export async function GET(): Promise<NextResponse> {
+  try {
+    const cookieStore = await cookies()  // Aseguramos que estamos esperando la promesa
+    const token = cookieStore.get('auth_token')?.value
 
-  // Ahora utilizamos cookieStore.delete() para eliminar la cookie "auth_token"
-  cookieStore.delete('auth_token') // Esto elimina la cookie
+    if (!token) {
+      return NextResponse.json({ error: 'No autenticado' }, { status: 401 })
+    }
 
-  return response
+    const decoded = jwt.verify(token, JWT_SECRET) as {
+      id: string
+      name: string
+      email: string
+    }
+
+    return NextResponse.json({ user: decoded })
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      console.error(err.message)
+    }
+    return NextResponse.json({ error: 'Token inválido o expirado' }, { status: 401 })
+  }
 }

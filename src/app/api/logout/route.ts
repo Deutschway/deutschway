@@ -2,18 +2,14 @@ import { NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 
 export async function POST() {
-  // Establecemos la cookie con un valor vacío y con un maxAge de 0 para eliminarla
-  const cookieStore = cookies()
+  // Esperamos la promesa de cookies() y luego trabajamos con ella
+  const cookieStore = await cookies() // Asegúrate de esperar la promesa
 
-  // Usamos NextResponse para establecer la cookie correctamente
+  // Usamos NextResponse para establecer la respuesta correctamente
   const response = NextResponse.json({ message: 'Sesión cerrada' })
 
-  // Establecemos la cookie "auth_token" con un valor vacío y un maxAge de 0, lo que la elimina
-  cookieStore.set('auth_token', '', {
-    httpOnly: true,
-    path: '/',
-    maxAge: 0, // Esto elimina la cookie
-  })
+  // Ahora utilizamos cookieStore.delete() para eliminar la cookie "auth_token"
+  cookieStore.delete('auth_token') // Esto elimina la cookie
 
   return response
 }

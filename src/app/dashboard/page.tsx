@@ -10,7 +10,7 @@ interface User {
 
 export default function DashboardPage() {
   const [loading, setLoading] = useState(true)
-  const [user, setUser] = useState<User | null>(null)  // Tipamos el estado de usuario
+  const [user, setUser] = useState<User | null>(null)  
   const router = useRouter()
 
   useEffect(() => {
@@ -21,8 +21,11 @@ export default function DashboardPage() {
 
         const data = await res.json()
         setUser(data.user)
-      } catch (err: any) {  // Tipamos el error
-        router.push('/login') // Redirige si no está autenticado
+      } catch (err: unknown) {  
+        if (err instanceof Error) {
+          console.error(err.message) 
+        }
+        router.push('/login') 
       } finally {
         setLoading(false)
       }

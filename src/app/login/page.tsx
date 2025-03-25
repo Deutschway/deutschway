@@ -21,7 +21,7 @@ export default function LoginPage() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email, password }),
-      credentials: 'include', // 👈 ESTA LÍNEA ES CLAVE
+      credentials: 'include', 
     })
 
     const data = await res.json()

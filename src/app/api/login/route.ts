@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
 import * as bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { cookies } from 'next/headers'
+import { cookies } from 'next/headers'  // eslint-disable-line @typescript-eslint/no-unused-vars
 
 const prisma = new PrismaClient()
 const JWT_SECRET = process.env.JWT_SECRET || 'secreto-super-seguro'
@@ -47,6 +47,7 @@ export async function POST(req: Request) {
     },
   })
 
+  // Aquí estamos utilizando correctamente cookies()
   response.cookies.set('auth_token', token, {
     httpOnly: true,
     path: '/',

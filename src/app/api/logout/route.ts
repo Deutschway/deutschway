@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
-import jwt from 'jsonwebtoken'  // Asegúrate de que esta línea esté presente
+import jwt from 'jsonwebtoken'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'secreto-super-seguro'
 
 export async function GET(): Promise<NextResponse> {
   try {
-    const cookieStore = await cookies()  // Aseguramos que estamos esperando la promesa
+    const cookieStore = await cookies() // Aseguramos que estamos esperando la promesa
     const token = cookieStore.get('auth_token')?.value
 
     if (!token) {

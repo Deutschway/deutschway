@@ -9,11 +9,7 @@ export async function POST() {
   const response = NextResponse.json({ message: 'Sesión cerrada' })
 
   // Establecemos la cookie "auth_token" con un valor vacío y un maxAge de 0, lo que la elimina
-  response.cookies.set('auth_token', '', {
-    httpOnly: true,
-    path: '/',
-    maxAge: 0, // Esto elimina la cookie
-  })
+  cookieStore.delete('auth_token') // Usamos delete para eliminar la cookie
 
   return response
 }

@@ -6,7 +6,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'secreto-super-seguro'
 
 export async function GET(): Promise<NextResponse> {
   try {
-    const cookieStore = cookies()
+    const cookieStore = await cookies()  // Asegúrate de esperar la promesa de cookies
     const token = cookieStore.get('auth_token')?.value
 
     if (!token) {

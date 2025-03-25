@@ -41,12 +41,20 @@ export async function POST(req: Request) {
     { expiresIn: '7d' }
   )
 
-  // Guardar en cookie
- cookies().set('auth_token', token, {
+  // Esperar las cookies antes de establecerlas
+  const cookieStore = await cookies() // Asegurándonos de que sea una promesa resuelta
+
+  const response = NextResponse.json({
+    message: 'Usuario registrado y logueado',
+    user: newUser
+  })
+
+  // Establecer el token de la cookie correctamente
+  cookieStore.set('auth_token', token, {
     httpOnly: true,
     path: '/',
     maxAge: 60 * 60 * 24 * 7, // 7 días
   })
 
-  return NextResponse.json({ message: 'Usuario registrado y logueado', user: newUser })
+  return response
 }

@@ -1,8 +1,8 @@
+import '../styles/globals.css';
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white px-6 py-12 flex flex-col md:flex-row items-center justify-center gap-12">
-      
-      {/* Columna de texto */}
       <div className="max-w-xl text-center md:text-left">
         <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
           Domina el alemán del nivel <span className="text-purple-500">A1 al B1</span>
@@ -14,12 +14,9 @@ export default function Home() {
           Inicia ahora
         </button>
       </div>
-
-      {/* Columna de imagen */}
       <div className="max-w-md">
         <img src="/images/hero-illustration.png" alt="Ilustración educativa" className="w-full h-auto" />
       </div>
-
     </main>
   );
 }

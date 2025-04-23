@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Ruta de tu archivo del Dashboard
-const dashboardFilePath = path.join(__dirname, 'src', 'app', 'dashboard.js'); // Cambia la ruta según tu estructura de proyecto
+const dashboardFilePath = path.join(__dirname, 'src', 'app', 'dashboard', 'page.tsx'); // Cambia la ruta según tu estructura de proyecto
 
 // Leer el archivo del Dashboard
 fs.readFile(dashboardFilePath, 'utf8', (err, data) => {

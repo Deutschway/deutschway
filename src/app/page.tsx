@@ -91,7 +91,7 @@ export default function Home() {
         </p>
         <div className="max-w-lg mx-auto bg-gray-900 rounded-lg p-6 shadow-md">
           <img
-            src="/foto-perfil.jpg" // reemplaza por tu imagen en /public si deseas
+            src="/foto-perfil.jpg"
             alt="Testimonio"
             className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
           />
@@ -102,6 +102,92 @@ export default function Home() {
           <p className="text-sm text-gray-400">Fundador de DeutschWay</p>
         </div>
       </section>
+
+      {/* SECCIÓN 4: Ausbildung y oportunidades reales */}
+<section className="bg-gray-900 text-white py-20 px-6 mt-24">
+  <div className="max-w-4xl mx-auto text-center space-y-8">
+    <h2 className="text-3xl font-bold text-purple-400">Mehr als nur Deutsch lernen</h2>
+    <p className="text-gray-300 text-lg">
+      Bei DeutschWay glauben wir, dass Deutschlernen der erste Schritt zu einem sinnvollen Leben sein kann.
+      In einem Land, in dem 65% der Jugendlichen nicht studieren und über 20% an Auswanderung denken,
+      kann <strong className="text-white">die Sprache der Schlüssel zu echten Chancen in Deutschland sein</strong>.
+    </p>
+
+    <div className="bg-gray-800 p-6 rounded-lg text-left space-y-4 text-gray-300">
+      <p>🔍 <strong>65%</strong> der jungen Menschen in Venezuela studieren nicht weiter nach der Schule.</p>
+      <p>📉 Nur <strong>40%</strong> möchten nach dem Abschluss in Venezuela arbeiten.</p>
+      <p>🌍 <strong>23%</strong> planen bereits, auszuwandern (Quelle: UCAB).</p>
+    </div>
+
+    <p className="text-gray-400 italic">
+      Wir wollen nicht, dass du aus Not ausreist. Wir wollen, dass du aus Chancen auswanderst.
+    </p>
+
+    <p className="text-xl text-purple-300 font-medium">
+      🇩🇪 DeutschWay bereitet dich auf eine <strong>Ausbildung</strong> in Deutschland vor – inklusive Sprache und Visum.
+    </p>
+
+    <a
+      href="#como-funciona"
+      className="inline-block mt-6 bg-purple-600 hover:bg-purple-700 text-white py-3 px-6 rounded-xl text-lg transition"
+    >
+      Erfahre, wie es funktioniert
+    </a>
+  </div>
+</section>
+
+{/* SECCIÓN 5: Was macht DeutschWay einzigartig? */}
+<section className="bg-gray-900 text-white py-20 px-6">
+  <div className="max-w-5xl mx-auto text-center space-y-8">
+    <h2 className="text-3xl font-bold text-purple-400">Was macht DeutschWay in Venezuela einzigartig?</h2>
+    <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+      Wir sind nicht nur ein weiterer Sprachkurs. Wir sind ein Tor zu einem besseren Leben. So unterscheiden wir uns.
+    </p>
+
+    <div className="overflow-x-auto">
+      <table className="table-auto w-full text-left text-sm md:text-base mt-6 border border-gray-700">
+        <thead>
+          <tr className="bg-gray-800 text-purple-300">
+            <th className="p-3 font-semibold">Merkmal</th>
+            <th className="p-3 font-semibold">DeutschWay</th>
+            <th className="p-3 font-semibold">Andere Anbieter</th>
+          </tr>
+        </thead>
+        <tbody className="text-gray-300">
+          <tr className="border-t border-gray-700">
+            <td className="p-3">Zugänglich & 100% online</td>
+            <td className="p-3">✅ Ja</td>
+            <td className="p-3">❌ Eingeschränkt oder nur vor Ort</td>
+          </tr>
+          <tr className="border-t border-gray-700">
+            <td className="p-3">Für Venezolaner entwickelt</td>
+            <td className="p-3">✅ Ja</td>
+            <td className="p-3">❌ Nein</td>
+          </tr>
+          <tr className="border-t border-gray-700">
+            <td className="p-3">Weg zum Visum & Ausbildung</td>
+            <td className="p-3">✅ Ja</td>
+            <td className="p-3">❌ Nein</td>
+          </tr>
+          <tr className="border-t border-gray-700">
+            <td className="p-3">Kurs von A1 bis B1 strukturiert</td>
+            <td className="p-3">✅ Ja</td>
+            <td className="p-3">⚠️ Teilweise oder unstrukturiert</td>
+          </tr>
+          <tr className="border-t border-gray-700">
+            <td className="p-3">Sozialer & Bildungszweck</td>
+            <td className="p-3">✅ Klar definiert</td>
+            <td className="p-3">❌ Nicht vorhanden</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p className="text-gray-400 italic mt-6">
+      Unser Ziel: Sprache soll kein Hindernis sein – sondern deine Chance.
+    </p>
+  </div>
+</section>
     </>
   )
 }
